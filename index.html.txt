@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Why You're the One</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: url('section3_bg.avif') no-repeat center center/cover;
+      color: #fff;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    #section3 {
+      min-height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 100px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      z-index: 1;
+      position: relative;
+    }
+
+    h2 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2.8rem;
+      text-align: center;
+      color: #ffbde6;
+      margin-bottom: 40px;
+      text-shadow: 0 0 15px #ff80b3;
+    }
+
+    .message-line {
+      max-width: 900px;
+      font-size: 1.2rem;
+      line-height: 1.9;
+      text-align: left;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeIn 1s forwards;
+    }
+
+    .message-line.highlight {
+      color: #ffbde6;
+      font-weight: bold;
+      text-shadow: 0 0 8px #ff80b3;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    .next-btn {
+      margin-top: 40px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      background-color: #ff82ad;
+      color: white;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 5px 15px rgba(255, 182, 193, 0.5);
+      transition: 0.3s ease;
+    }
+
+    .next-btn:hover {
+      background-color: #ff5e9c;
+      box-shadow: 0 7px 20px rgba(255, 105, 180, 0.7);
+    }
+
+    #heartsCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+      .message-line {
+        font-size: 1rem;
+      }
+      .next-btn {
+        font-size: 1rem;
+        padding: 10px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="heartsCanvas"></canvas>
+
+<section id="section3">
+  <h2>Idk what should be the title</h2>
+  <div id="messageContainer"></div>
+
+  <button class="next-btn" onclick="showPopup()">Next Universe ??</button>
+</section>
+
+<script>
+  const paragraph = `I would start it by saying —
+I too don't know much why I loved you.
+Why I fell in love with that simple yet special girl...
+the girl who just chose me as the monitor.
+
+Mai kya bol skta hoon ki maine pyaar kyu kra —
+but it felt different whenever I saw you.
+It felt like...
+iss ladki mein kuchh toh hai.
+She is not like the others.
+
+Aur jab meri baat chaalu hui,
+I fell for your voice...
+your talks...
+your intelligence...
+you looking extraordinary while being simple...
+your understanding behaviour...
+your consoling nature...
+your smile...
+your English...
+your Hindi...
+your loving behaviour...
+your caring nature...
+
+Like likhne ko har cheez hi likh doon —
+but I’ll just say:
+I fell for Akanksha.
+
+I didn’t fall for your appearances
+(voh alag baat hai ki you are the prettiest apsara),
+nor for your smartness
+(voh alag baat hai ki you are the smartest girl),
+and especially not because you chose me as the monitor.
+
+Mujhe bas pyaar hua —
+kisi kaaran se nahi,
+insaan se hua.
+
+And I know, log bolte hain aise pyaar nhi hota —
+but mujhe andar se lagta tha:
+you are the special one.
+Bas yahi chahiye tha.
+Not knowing ki voh insaan ek kokil kanthi apsara hai.
+
+Toh bas yahi kehna tha.
+I hope it helps you understand my love for you —
+which honestly, I myself don’t know how much I love you...
+
+Aur iss paragraph ko ant karte-karte,
+bas yahi kehna chahunga:
+I will never ever leave you.
+Aur plan toh yahi hoga ki
+tera 70th birthday bhi mai hi manau,
+just like this 18th birthday.
+
+Happyyyyyy birthdayyyyy
+to the lovee off myyy lifeeeee,
+yayyyyyyyyyyyyyyyyyyyyy ??
+
+---
+
+You made me happyyy whenever I was sad.
+Whenever I wanted to share something —
+you were there for me.
+
+Not just to listen —
+but to support me.
+To encourage me every time.
+To tell me that I’m not the worst —
+I’m the best.
+
+But the person explaining all that — was even better than me.
+
+So,
+to the best girl I know,
+and the best I will ever know in the future...
+To the girl I loved the most,
+talked to the most,
+opened myself the most...
+and the one I cried with the most...
+
+Happppppyyyyy birthdayyyyyyyy Akankshaaaaaaaaaaaaaaaaa ??`;
+
+  const messageContainer = document.getElementById("messageContainer");
+  const lines = paragraph.split("\n");
+
+  lines.forEach((line, index) => {
+    const div = document.createElement("div");
+    div.classList.add("message-line");
+
+    const lowerLine = line.toLowerCase();
+    if (
+      lowerLine.includes("akanksha") ||
+      lowerLine.includes("love") ||
+      lowerLine.includes("prettiest apsara") ||
+      lowerLine.includes("smartest girl")
+    ) {
+      div.classList.add("highlight");
+    }
+
+    div.textContent = line;
+    div.style.animationDelay = `${index * 0.4}s`;
+    messageContainer.appendChild(div);
+  });
+
+  function showPopup() {
+    alert("Now ask Agrim for third site ???????");
+  }
+
+  const canvas = document.getElementById("heartsCanvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const hearts = Array.from({ length: 50 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    size: Math.random() * 8 + 4,
+    speed: Math.random() * 1.5 + 0.5,
+    opacity: Math.random() * 0.5 + 0.3,
+  }));
+
+  function drawHearts() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (let h of hearts) {
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,182,193,${h.opacity})`;
+      ctx.arc(h.x, h.y, h.size, 0, Math.PI * 2);
+      ctx.fill();
+      h.y -= h.speed;
+      if (h.y < -10) h.y = canvas.height + 10;
+    }
+    requestAnimationFrame(drawHearts);
+  }
+
+  drawHearts();
+</script>
+
+</body>
+</html>
